@@ -100,7 +100,7 @@ def FrankWolfe(K1, K2, K3, x):
 
 
 
-def MCDM_filter(X, Y,K,lamda):
+def MCDM_filter(X, Y, K, lamda_):
 
     _, unq = np.unique(X, axis=0, return_index=True)
     X = X[unq]
@@ -149,7 +149,7 @@ def MCDM_filter(X, Y,K,lamda):
 
         IS = IS.squeeze()
         JS = JS.squeeze()
-        p = np.exp(-lamda*np.linalg.norm(VECn[IS]-VECn[JS], axis=1)*np.sqrt(1/((Xn[IS,0]-Xn[JS,0])**2+s)+1/((Xn[IS,1]-Xn[JS,1])**2+s)))
+        p = np.exp(-lamda_*np.linalg.norm(VECn[IS]-VECn[JS], axis=1)*np.sqrt(1/((Xn[IS,0]-Xn[JS,0])**2+s)+1/((Xn[IS,1]-Xn[JS,1])**2+s)))
         v1l = np.log(p)
         v2l = np.log((1-p)/d)
         v3l = np.log(1-p-2*(1-p)/d)
